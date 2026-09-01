@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CreatorForge - AI Video Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">✦ CreatorForge</div>
+
+    <button class="new-btn" onclick="newProject()">＋ New Project</button>
+
+    <nav>
+      <button class="nav active" onclick="showPage('overview')">⌂ Overview</button>
+      <button class="nav" onclick="showPage('research')">◉ Research</button>
+      <button class="nav" onclick="showPage('script')">✎ Script</button>
+      <button class="nav" onclick="showPage('media')">▣ Media</button>
+      <button class="nav" onclick="showPage('thumbnail')">◩ Thumbnail</button>
+      <button class="nav" onclick="showPage('assembly')">▶ Assembly</button>
+      <button class="nav" onclick="showPage('export')">↗ Export</button>
+      <button class="nav" onclick="showPage('settings')">⚙ Settings</button>
+    </nav>
+
+    <div class="free-badge">
+      FREE BUILD<br>
+      <small>No billing connected</small>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div>
+        <small>AI VIDEO STUDIO</small>
+        <h1 id="pageTitle">Overview</h1>
+      </div>
+      <span>● Local Project</span>
+    </header>
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="page active">
+      <div class="hero">
+        <div>
+          <span>YOUR CREATOR WORKSPACE</span>
+          <h2>Turn an idea into a <em>complete video.</em></h2>
+          <p>
+            Research a topic, write a script, plan scenes,
+            create media and assemble your project.
+          </p>
+          <button class="primary" onclick="showPage('research')">
+            Start a Project →
+          </button>
+        </div>
+      </div>
+
+      <h2>Production Pipeline</h2>
+
+      <div class="pipeline">
+        <div>01<br><b>Niche Research</b></div>
+        <div>02<br><b>Style & Ideas</b></div>
+        <div>03<br><b>Script</b></div>
+        <div>04<br><b>Voiceover</b></div>
+        <div>05<br><b>Visuals</b></div>
+        <div>06<br><b>Thumbnail</b></div>
+        <div>07<br><b>Assembly</b></div>
+        <div>08<br><b>Export</b></div>
+      </div>
+
+      <div class="project-card">
+        <b>▶</b>
+        <div>
+          <strong id="projectName">Untitled Video</strong>
+          <p id="projectMeta">Ready to start</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research" class="page">
+      <span>STEP 01–02</span>
+      <h2>Find Your Next Topic</h2>
+      <p>Enter a niche or topic to create a research brief.</p>
+
+      <div class="grid">
+        <div class="panel">
+          <label>Niche / Topic</label>
+          <input id="niche" placeholder="e.g. mysterious historical events">
+
+          <label>Audience</label>
+          <select id="audience">
+            <option>General Audience</option>
+            <option>Teen Learners</option>
+            <option>Tech Enthusiasts</option>
+            <option>History Fans</option>
+          </select>
+
+          <button class="primary full" onclick="research()">
+            Analyze Niche
+          </button>
+        </div>
+
+        <div class="panel">
+          <h3>Content Research</h3>
+          <div id="researchResult">
+            Your research brief will appear here.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCRIPT -->
+    <section id="script" class="page">
+      <span>STEP 03</span>
+      <h2>Write Your Script</h2>
+      <p>Create an editable narration draft.</p>
+
+      <div class="panel">
+        <div class="toolbar">
+          <select id="tone">
+            <option>Documentary</option>
+            <option>Educational</option>
+            <option>Fast-paced</option>
+            <option>Storytelling</option>
+          </select>
+
+          <button class="secondary" onclick="generateScript()">
+            Generate Draft
+          </button>
+        </div>
+
+        <textarea id="scriptText"
+          placeholder="Your script will appear here..."></textarea>
+
+        <small id="wordcount">0 words</small>
+      </div>
+    </section>
+
+    <!-- MEDIA -->
+    <section id="media" class="page">
+      <span>STEP 04–05</span>
+      <h2>Build Your Media</h2>
+      <p>Prepare narration, scenes and visual prompts.</p>
+
+      <div class="media-grid">
+        <div class="panel">
+          <h3>🎙 Voiceover</h3>
+          <p>Prepare narration and voice beats.</p>
+          <button class="secondary">Prepare</button>
+        </div>
+
+        <div class="panel">
+          <h3>🎬 Scene Prompts</h3>
+          <p>Create visual direction for each scene.</p>
+          <button class="secondary">Prepare</button>
+        </div>
+
+        <div class="panel">
+          <h3>🖼 Images</h3>
+          <p>Prepare still images for your video.</p>
+          <button class="secondary">Prepare</button>
+        </div>
+
+        <div class="panel">
+          <h3>🎥 Video Clips</h3>
+          <p>Prepare motion visuals.</p>
+          <button class="secondary">Prepare</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- THUMBNAIL -->
+    <section id="thumbnail" class="page">
+      <span>STEP 06</span>
+      <h2>Design a Thumbnail</h2>
+      <p>Create a thumbnail concept.</p>
+
+      <div class="grid">
+        <div class="thumbnail-preview">
+          <div id="thumbText">YOUR<br>VIDEO</div>
+        </div>
+
+        <div class="panel">
+          <label>Headline</label>
+          <input
+            id="thumbInput"
+            value="THE UNTOLD STORY"
+            oninput="updateThumbnail()">
+
+          <button class="primary full">
+            Save Concept
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSEMBLY -->
+    <section id="assembly" class="page">
+      <span>STEP 07</span>
+      <h2>Assemble Your Video</h2>
+      <p>Arrange your scenes into a timeline.</p>
+
+      <div class="panel">
+        <div class="timeline">
+          <div>HOOK</div>
+          <div>SCENE 01</div>
+          <div>SCENE 02</div>
+          <div>SCENE 03</div>
+          <div>ENDING</div>
+        </div>
+
+        <button class="primary" onclick="buildPreview()">
+          Build Preview
+        </button>
+      </div>
+    </section>
+
+    <!-- EXPORT -->
+    <section id="export" class="page">
+      <span>STEP 08</span>
+      <h2>Export Your Project</h2>
+      <p>Your project is ready to package.</p>
+
+      <div class="panel export">
+        <h2>✓ Project Ready</h2>
+        <p>Script, scene plan, thumbnail concept and timeline.</p>
+
+        <button class="primary" onclick="downloadBrief()">
+          Download Project Brief
+        </button>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settings" class="page">
+      <span>SETTINGS</span>
+      <h2>Workspace Settings</h2>
+
+      <div class="panel">
+        <label>Project Name</label>
+        <input id="settingsName" value="Untitled Video">
+
+        <button class="primary" onclick="saveSettings()">
+          Save Settings
+        </button>
+
+        <hr>
+
+        <h3>AI Integrations</h3>
+        <p>
+          AI provider connections can be added later.
+          No payment system is included.
+        </p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+  </html>
