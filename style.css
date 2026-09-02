@@ -44,11 +44,11 @@ textarea{min-height:400px;resize:vertical}
 .export{text-align:center;padding:50px}
 hr{border:0;border-top:1px solid #eee;margin:30px 0}
 @media(max-width:800px){
-.sidebar{width:70px;padding:15px 8px}
+.sidebar{width:190px;padding:18px 10px}
 .brand{font-size:0;text-align:center}
 .new-btn{font-size:0}
 .nav{font-size:0;text-align:center}
-.free-badge{display:none}
+.nav span{display:inline}
 .main{margin-left:70px;width:calc(100% - 70px);padding:0 18px 40px}
 .hero h2{font-size:35px}
 .pipeline{grid-template-columns:1fr 1fr}
