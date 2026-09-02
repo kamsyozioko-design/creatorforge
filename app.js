@@ -217,84 +217,34 @@ function saveChannelNiche() {
    ========================= */
 
 function research() {
+  const nicheInput = document.getElementById("niche");
+  const audienceInput = document.getElementById("audience");
 
-  const nicheInput =
-    document.getElementById("niche");
+  const niche = nicheInput ? nicheInput.value.trim() : "";
+  const audience = audienceInput ? audienceInput.value : "General Audience";
 
-  const audienceInput =
-    document.getElementById("audience");
+  const topic = niche || "your chosen niche";
 
-  const niche =
-    nicheInput
-      ? nicheInput.value.trim()
-      : "";
-
-  const audience =
-    audienceInput
-      ? audienceInput.value
-      : "General Audience";
-
-  state.niche =
-    niche || state.channelNiche || "your chosen niche";
-
-  state.audience =
-    audience;
-
-  const result =
-    document.getElementById("researchResult");
-
-  if (!result) return;
-
-  const channelText =
-    state.channelNiche
-      ? `<p><strong>Channel niche:</strong> ${escapeHTML(state.channelNiche)}</p>`
-      : "";
-
-  result.innerHTML = `
-    <div class="research-card">
-
-      <h3>${escapeHTML(state.niche)}</h3>
-
-      ${channelText}
-
-      <p>
-        <strong>Audience:</strong>
-        ${escapeHTML(state.audience)}
-      </p>
-
-      <h4>Content Opportunities</h4>
-
-      <ul>
-        <li>Curiosity-driven questions</li>
-        <li>Unexpected facts and discoveries</li>
-        <li>Short list-style videos</li>
-        <li>Story-based explanations</li>
-        <li>Strong hook + visual payoff</li>
-      </ul>
-
-      <h4>Suggested Video Structure</h4>
-
-      <ol>
-        <li>Hook — grab attention immediately</li>
-        <li>Context — explain the situation</li>
-        <li>Main story — reveal the interesting information</li>
-        <li>Turning point — introduce the strongest moment</li>
-        <li>Conclusion — memorable takeaway</li>
-      </ol>
-
-      <p>
-        <strong>Next step:</strong>
-        Create your script using this research direction.
-      </p>
-
-    </div>
+  document.getElementById("researchResult").innerHTML = `
+    <h4>${topic}</h4>
+    <p><b>Audience:</b> ${audience}</p>
+    <p><b>Content direction:</b> curiosity-led storytelling with a strong opening.</p>
+    <ul>
+      <li>Lead with a surprising question or fact.</li>
+      <li>Use clear story sections and visual changes.</li>
+      <li>Build toward the strongest reveal.</li>
+      <li>End with a memorable takeaway.</li>
+    </ul>
+    <p><b>Suggested formats:</b> explainer · list · timeline · mystery.</p>
+    <button class="primary full" onclick="go('script')">
+      Create Script →
+    </button>
   `;
 
-  state.researchDone = true;
-
-  updateProjectDisplay();
-  saveLocalProject();
+  localStorage.setItem("niche", topic);
+  updateProgress(15);
 }
+
 
 
 /* =========================
