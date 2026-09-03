@@ -807,5 +807,6 @@ document.addEventListener(
     updateProjectDisplay();
     updateWordCount();
     updateThumbnail();
+  function toggleSidebar(){
+  document.querySelector(".sidebar").classList.toggle("open");
   }
-);
